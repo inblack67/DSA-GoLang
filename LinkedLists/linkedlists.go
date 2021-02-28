@@ -15,14 +15,36 @@ type LinkedList struct {
 }
 
 // Append ...
-func Append(ll *LinkedList, data int) bool {
+func Append(ll *LinkedList, data int) {
+
+	newNode := Node{
+		data: data,
+		next: nil,
+	}
+
+	if ll.size == 0 {
+		ll.head = &newNode
+		ll.size++
+		return
+	}
+
+	currentNode := ll.head
+	for i := 0; i < ll.size-1; i++ {
+		currentNode = currentNode.next
+	}
+
+	currentNode.next = &newNode
+	ll.size++
+}
+
+// Prepend ...
+func Prepend(ll *LinkedList, data int) {
 	newNode := Node{
 		data: data,
 	}
 	newNode.next = ll.head
 	ll.head = &newNode
 	ll.size++
-	return true
 }
 
 // Createlinkedlist ...
