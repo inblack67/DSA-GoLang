@@ -1,6 +1,8 @@
 package linkedlists
 
-import "fmt"
+import (
+	"fmt"
+)
 
 // Node ...
 type Node struct {
@@ -45,6 +47,25 @@ func Prepend(ll *LinkedList, data int) {
 	newNode.next = ll.head
 	ll.head = &newNode
 	ll.size++
+}
+
+// Pop ...
+func Pop(ll *LinkedList) {
+	if ll.size == 0 {
+		return
+	}
+	if ll.size == 1 {
+		ll.head = nil
+		return
+	}
+	currentNode := ll.head
+	var prevNode *Node = nil
+	for i := 0; i < ll.size-1; i++ {
+		prevNode = currentNode
+		currentNode = currentNode.next
+	}
+	prevNode.next = nil
+	ll.size--
 }
 
 // Createlinkedlist ...
