@@ -20,6 +20,9 @@ func main() {
 	heapData := []int{10, 20, 30}
 	for _, v := range heapData {
 		m.Insert(v)
-		fmt.Println(m)
+		// fmt.Println(m)
 	}
+	m.Extract()
+	m.Extract()
+	fmt.Println(m)
 }
